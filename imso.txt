@@ -1,0 +1,124 @@
+dsadd  ou  "ou=martes,dc=augusto,dc=local"  -desc  "Unidad organizativa martes"
+	dsadd  ou  "ou=augusto-1,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa augusto-1"
+		dsadd  ou  "ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local" -desc  "unidad organizativa 1"
+		dsadd  ou  "ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 2"
+
+
+	dsadd  ou  "ou=augusto-2,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa augusto-2" 
+		dsadd  ou  "ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 3"
+		dsadd  ou  "ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 4"
+	
+
+
+
+
+
+
+	dsadd  ou  "ou=augusto-3,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa augusto-3"
+		dsadd  ou  "ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 5"
+		dsadd  ou  "ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 6"
+
+
+	dsadd  ou  "ou=augusto-4,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa augusto-4"
+		dsadd  ou  "ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 7"
+		dsadd  ou  "ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local" -desc  "Unidad organizativa 8"
+
+SIGUIENTE SCRIPT grupos
+** muestra dsadd  group  "cn=g-global-1,ou=uo-augusto,dc=augusto,dc=ies" -desc "Grupo global de pruebas" -samid g-global-1  -scope g 
+		dsadd  computer  "cn=pc-xp,ou=uo-augusto,dc=augusto,dc=ies"  -samid  pc-xp
+
+
+dsadd group "cn=gg-augusto,ou=martes,dc=augusto,dc=local"  -desc "Grupo global augusto" -samid gg-augusto  -scope g
+dsadd group "cn=gu-augusto,ou=martes,dc=augusto,dc=local"  -desc "Grupo universal augusto" -samid gu-augusto  -scope u
+	
+
+	dsadd group "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "Grupo local dentro de uo augusto-1" -samid gl1-augusto  -scope l
+		dsadd  computer  "cn=pc1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local" -desc "equipo dentro de uo augusto-1" -samid  pc1-augusto 
+
+
+
+	dsadd group "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "Grupo local dentro de uo augusto-2" -samid gl2-augusto  -scope l
+			dsadd  computer  "cn=pc2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local" -desc "equipo dentro de uo augusto-2" -samid  pc2-augusto
+
+
+	dsadd group "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "Grupo local dentro de uo augusto-3" -samid gl3-augusto  -scope l
+	dsadd  computer  "cn=pc3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local" -desc "equipo dentro de uo augusto-3" -samid  pc3-augusto
+
+	dsadd group "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "Grupo local dentro de uo augusto-4" -samid gl4-augusto  -scope l
+	dsadd  computer  "cn=pc4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local" -desc "equipo dentro de uo augusto-4" -samid  pc4-augusto
+
+
+
+
+usuarios
+
+	dsadd  user  "cn=usuario1-augusto,ou=uo-augusto,dc=augusto,dc=ies"  -desc "Un texto descriptivo"  -samid "user"  -pwd  "Usuario-100"  -upn  usuario1-augusto@augusto.ies  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=g-local-1,ou=uo-augusto,dc=augusto,dc=ies"  "cn=g-global-1,ou=uo-augusto,dc=augusto,dc=ies"  "cn=g-universal-1,ou=uo-augusto,dc=augusto,dc=ies"
+	
+
+
+
+	dsadd  user  "cn=user01-augusto,ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user01-augusto"  -pwd  "Usuario-100"  -upn  user01-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user02-augusto,ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user02-augusto"  -pwd  "Usuario-100"  -upn  user02-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user03-augusto,ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user03-augusto"  -pwd  "Usuario-100"  -upn  user03-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user04-augusto,ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user04-augusto"  -pwd  "Usuario-100"  -upn  user04-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user05-augusto,ou=ou1,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user05-augusto"  -pwd  "Usuario-100"  -upn  user05-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+
+
+	dsadd  user  "cn=user06-augusto,ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user06-augusto"  -pwd  "Usuario-100"  -upn  user06-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user07-augusto,ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user07-augusto"  -pwd  "Usuario-100"  -upn  user07-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user08-augusto,ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user08-augusto"  -pwd  "Usuario-100"  -upn  user08-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user09-augusto,ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user09-augusto"  -pwd  "Usuario-100"  -upn  user09-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"	
+	dsadd  user  "cn=user10-augusto,ou=ou2,ou=augusto-1,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-1"  -samid "user10-augusto"  -pwd  "Usuario-100"  -upn  user10-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl1-augusto,ou=augusto-1,ou=martes,dc=augusto,dc=local"
+
+
+	dsadd  user  "cn=user11-augusto,ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user11-augusto"  -pwd  "Usuario-100"  -upn  user11-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user12-augusto,ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user12-augusto"  -pwd  "Usuario-100"  -upn  user12-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user13-augusto,ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user13-augusto"  -pwd  "Usuario-100"  -upn  user13-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user14-augusto,ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user14-augusto"  -pwd  "Usuario-100"  -upn  user14-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user15-augusto,ou=ou3,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user15-augusto"  -pwd  "Usuario-100"  -upn  user15-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+
+	
+	
+	dsadd  user  "cn=user16-augusto,ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user16-augusto"  -pwd  "Usuario-100"  -upn  user16-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user17-augusto,ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user17-augusto"  -pwd  "Usuario-100"  -upn  user17-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user18-augusto,ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user18-augusto"  -pwd  "Usuario-100"  -upn  user18-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user19-augusto,ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user19-augusto"  -pwd  "Usuario-100"  -upn  user19-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user20-augusto,ou=ou4,ou=augusto-2,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-2"  -samid "user20-augusto"  -pwd  "Usuario-100"  -upn  user20-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl2-augusto,ou=augusto-2,ou=martes,dc=augusto,dc=local"
+
+	dsadd  user  "cn=user21-augusto,ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user21-augusto"  -pwd  "Usuario-100"  -upn  user21-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user22-augusto,ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user22-augusto"  -pwd  "Usuario-100"  -upn  user22-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user23-augusto,ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user23-augusto"  -pwd  "Usuario-100"  -upn  user23-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user24-augusto,ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user24-augusto"  -pwd  "Usuario-100"  -upn  user24-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user25-augusto,ou=ou5,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user25-augusto"  -pwd  "Usuario-100"  -upn  user25-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+
+	dsadd  user  "cn=user26-augusto,ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user26-augusto"  -pwd  "Usuario-100"  -upn  user26-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user27-augusto,ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user27-augusto"  -pwd  "Usuario-100"  -upn  user27-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	
+	dsadd  user  "cn=user28-augusto,ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user28-augusto"  -pwd  "Usuario-100"  -upn  user28-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user29-augusto,ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user29-augusto"  -pwd  "Usuario-100"  -upn  user29-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user30-augusto,ou=ou6,ou=augusto-3,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-3"  -samid "user30-augusto"  -pwd  "Usuario-100"  -upn  user30-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl3-augusto,ou=augusto-3,ou=martes,dc=augusto,dc=local"
+
+	
+
+
+	dsadd  user  "cn=user31-augusto,ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user31-augusto"  -pwd  "Usuario-100"  -upn  user31-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user32-augusto,ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user32-augusto"  -pwd  "Usuario-100"  -upn  user32-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user33-augusto,ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user33-augusto"  -pwd  "Usuario-100"  -upn  user33-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"	
+	dsadd  user  "cn=user34-augusto,ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user34-augusto"  -pwd  "Usuario-100"  -upn  user34-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user35-augusto,ou=ou7,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user35-augusto"  -pwd  "Usuario-100"  -upn  user35-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+
+
+	
+	dsadd  user  "cn=user36-augusto,ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user36-augusto"  -pwd  "Usuario-100"  -upn  user36-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user37-augusto,ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user37-augusto"  -pwd  "Usuario-100"  -upn  user37-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user38-augusto,ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user38-augusto"  -pwd  "Usuario-100"  -upn  user38-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+	dsadd  user  "cn=user39-augusto,ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user39-augusto"  -pwd  "Usuario-100"  -upn  user39-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"	
+	dsadd  user  "cn=user40-augusto,ou=ou8,ou=augusto-4,ou=martes,dc=augusto,dc=local"  -desc "usuario de unidad organizativa augusto-4"  -samid "user40-augusto"  -pwd  "Usuario-100"  -upn  user-40-augusto@augusto.local  -pwdneverexpires  yes  -canchpwd  yes   -mustchpwd  no  -memberof  "cn=gl4-augusto,ou=augusto-4,ou=martes,dc=augusto,dc=local"
+
+
+
+
+
+
+
+

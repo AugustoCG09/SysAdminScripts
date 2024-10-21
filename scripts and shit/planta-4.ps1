@@ -1,0 +1,1 @@
+New-Item -Path 'C:\Planta-4' -ItemType Directory

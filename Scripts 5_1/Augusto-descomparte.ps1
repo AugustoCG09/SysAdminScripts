@@ -1,0 +1,9 @@
+Netshare Lunes /delete
+Netshare Martes /delete
+Netshare Sabado /delete
+Netshare Domingo /delete
+Netshare Documentos /delete
+Netshare Imagenes /delete
+Netshare Videos /delete
+Netshare Audios /delete
+Netshare Trabajos /delete
